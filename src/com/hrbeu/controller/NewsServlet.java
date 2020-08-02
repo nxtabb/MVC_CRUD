@@ -27,7 +27,13 @@ public class NewsServlet extends HttpServlet {
                 New new_sel = newsService.selectNewById(nid);
                 req.setAttribute("new1",new_sel);
                 req.getRequestDispatcher("update.jsp").forward(req,resp);
+            case "delete":
+                String idStr = req.getParameter("id");
+                int id = Integer.parseInt(idStr);
+                newsService.deleteNew(id);
+                resp.sendRedirect("/welcome");
         }
+
     }
 
     @Override
@@ -51,6 +57,7 @@ public class NewsServlet extends HttpServlet {
                 newsService.updateNew(title,author,content,lockflag,id);
                 resp.sendRedirect("/welcome");
                 break;
+
         }
     }
 }

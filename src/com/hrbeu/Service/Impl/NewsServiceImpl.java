@@ -24,4 +24,9 @@ public class NewsServiceImpl implements NewsService {
         Date pubdate = new Date();
         newsDao.updateNew(title,author,content,pubdate,lockflag,id);
     }
+
+    @Override
+    public void deleteNew(int id) {
+        newsDao.deleteNew(id);
+    }
 }

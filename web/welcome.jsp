@@ -38,7 +38,7 @@
         <th>内容</th>
         <th>状态</th>
         <%if(isadmin.equals("Y")){
-            %><th>操作</th><%
+            %><th colspan="2">操作</th><%
         }%>
 
     </tr>
@@ -53,6 +53,9 @@
         <% if(new_sel.getLockflag()==0){%><td>解锁</td><%}else{%><td>上锁</td><%}%>
         <%if(isadmin.equals("Y")){
         %><td><a href="/crudnews?method=update&id=<%=new_sel.getNid()%>">修改新闻</a></td><%
+        }%>
+        <%if(isadmin.equals("Y")){
+        %><td><a href="/crudnews?method=delete&id=<%=new_sel.getNid()%>">删除新闻</a></td><%
         }%>
     </tr>
     <%}%>

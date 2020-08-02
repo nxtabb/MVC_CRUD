@@ -72,4 +72,18 @@ public class NewsDaoImpl implements NewsDao {
         }
         DBUtil.realease(connection,preparedStatement,null);
     }
+
+    @Override
+    public void deleteNew(int id) {
+        connection = DBUtil.getConnection();
+        String sql = "delete from news where nid=?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DBUtil.realease(connection,preparedStatement,resultSet);
+    }
 }
